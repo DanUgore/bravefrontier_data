@@ -39,8 +39,8 @@ var paths = {
 for (var dirName in paths) {
 	var dir = paths[dirName];
 	if (!dir) continue;
-	var dict = BFData.files[dirName] = {isDir: true};
-	if (dirName === ".") dict = BFData.files;
+	if (dirName === ".") var dict = BFData.files;
+	else var dict = BFData.files[dirName] = {};
 	for (var fileName in dir) {
 		var file = dir[fileName];
 		if (!file) continue;
