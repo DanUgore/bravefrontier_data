@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- jQuery 1.11 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+Just a page to fool around with the Brave Frontier data.<br>
+Open up the console and use the BFData object.<br>
+BFData.files contains the data by filename / path. For example BFData.files.info leads to info.json and BFData.files.jp.info leads to jp/info.json<br>
+BFData.Units contains the data in info.json<br>
+BFData.Items contains the data in items.json<br>
+BFData.Evolutions contains the data in evo_list.json<br>
+and BFData.JP contains the same properties but for the JPBF data.<br>
+Data: <span id="loading">Loading...</span>
+</body>
+<script>
+BFData = {};
+BFData.files = {isDir: true};
+var paths = {
+	".": {
+		"ai": true,
+		"dictionary": true,
+		"evo_list": true,
+		"info": true,
+		"items": true,
+		"missions": true,
+		"skills": true
+	},
+	"jp": {
+		"ai": true,
+		"evo_list": true,
+		"info": true,
+		"items": true,
+		"missions": true,
+		"skills": true
+	},
+	"missions_parsed": false // Lol... find a way to add these later that isn't manual
+}
+for (var dirName in paths) {
+	var dir = paths[dirName];
+	if (!dir) continue;
+	var dict = BFData.files[dirName] = {isDir: true};
+	if (dirName === ".") dict = BFData.files;
+	for (var fileName in dir) {
+		var file = dir[fileName];
+		if (!file) continue;
+		
+	}
+}
+</script>
+</html>
