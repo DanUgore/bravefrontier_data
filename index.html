@@ -11,7 +11,7 @@ BFData.Units contains the data in info.json<br>
 BFData.Items contains the data in items.json<br>
 BFData.Evolutions contains the data in evo_list.json<br>
 and BFData.JP contains the same properties but for the JPBF data.<br>
-Data: <span id="loading">Loading...</span>
+<!--Data: <span id="loading">Loading...</span>-->
 </body>
 <script>
 BFData = {};
@@ -44,7 +44,10 @@ for (var dirName in paths) {
 	for (var fileName in dir) {
 		var file = dir[fileName];
 		if (!file) continue;
-		
+		if (dirName !== ".") dirName = "./"+dirName;
+		$.getJSON(dirName + "/" + fileName + ".json", function (data) {
+			dict[fileName] = data;
+		})
 	}
 }
 </script>
